@@ -1,11 +1,4 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Toolnest - Simple Online Utilities",
-  description:
-    "Toolnest brings together lightweight utilities like word counts, converters, and image tools in one place.",
-};
 
 const tools = [
   { href: "/tools/word-counter", label: "Word Counter" },
@@ -22,23 +15,28 @@ const tools = [
 
 export default function HomePage() {
   return (
-    <main style={{ fontFamily: "system-ui", padding: "2.5rem", lineHeight: 1.6 }}>
-      <header style={{ marginBottom: "2rem" }}>
-        <h1 style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>Toolnest</h1>
-        <p style={{ maxWidth: 720 }}>
-          Welcome to Toolnest — a growing collection of quick utilities for text and
-          image tasks. Pick a tool below to get started.
+    <main className="mx-auto w-full max-w-6xl px-6 py-10">
+      <section className="mb-10">
+        <h1 className="text-4xl font-semibold tracking-tight">Toolnest</h1>
+        <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+          A growing collection of quick, browser-based utilities for text and image
+          tasks. Pick a tool below to get started.
         </p>
-      </header>
-      <section>
-        <h2 style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>Popular Tools</h2>
-        <ul style={{ paddingLeft: "1.2rem" }}>
+      </section>
+
+      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+        <h2 className="text-xl font-semibold">Popular Tools</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => (
-            <li key={tool.href} style={{ marginBottom: "0.35rem" }}>
-              <Link href={tool.href}>{tool.label}</Link>
-            </li>
+            <Link
+              key={tool.href}
+              href={tool.href}
+              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50"
+            >
+              {tool.label}
+            </Link>
           ))}
-        </ul>
+        </div>
       </section>
     </main>
   );

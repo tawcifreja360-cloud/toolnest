@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" /> */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-screen">
+      <body className="min-h-screen antialiased">
         <div className="flex min-h-screen flex-col">
           <header className="border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
             <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
@@ -60,10 +60,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 text-sm text-slate-500 dark:text-slate-400">
               <span>© {new Date().getFullYear()} Toolnest</span>
               <span>Built for speed and focus.</span>
-            </div>
-          </footer>
-        </div>
-      </body>
-    </html>
-  );
-}
+            </di
