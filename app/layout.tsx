@@ -1,11 +1,15 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "./globals.css";
 import ThemeToggle from "../components/ThemeToggle";
 
-export const metadata = {
-  title: "Toolnest",
-  description: "A nest of productivity tools.",
+export const metadata: Metadata = {
+  title: {
+    default: "Toolnest",
+    template: "%s | Toolnest",
+  },
+  description: "A toolbox of quick, browser-based utilities for text and images.",
 };
 
 const themeInitScript = `
@@ -27,7 +31,10 @@ const themeInitScript = `
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+    <html
+      lang="en"
+      className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50"
+    >
       <head>
         {/* AdSense script placeholder */}
         {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" /> */}
