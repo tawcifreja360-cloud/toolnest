@@ -13,28 +13,25 @@ export const metadata: Metadata = {
 };
 
 const themeInitScript = `
-  (function () {
-    try {
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var shouldUseDark = stored ? stored === 'dark' : prefersDark;
-      if (shouldUseDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    } catch (e) {
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var shouldUseDark = stored ? stored === 'dark' : prefersDark;
+    if (shouldUseDark) {
+      document.documentElement.classList.add('dark');
+    } else {
       document.documentElement.classList.remove('dark');
     }
-  })();
+  } catch (e) {
+    document.documentElement.classList.remove('dark');
+  }
+})();
 `;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50"
-    >
+    <html lang="en" className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
       <head>
         {/* AdSense script placeholder */}
         {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" /> */}
@@ -60,4 +57,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 text-sm text-slate-500 dark:text-slate-400">
               <span>© {new Date().getFullYear()} Toolnest</span>
               <span>Built for speed and focus.</span>
-            </di
+            </div>
+          </footer>
+        </div>
+      </body>
+    </html>
+  );
+}
